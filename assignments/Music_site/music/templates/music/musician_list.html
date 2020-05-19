@@ -1,0 +1,9 @@
+<h1>All Musicians</h1>
+
+<ul>
+    {% for musician in object_list %}
+    <li>
+        <a href="{% url 'MusicianDetailView' musician.id %}">{{ musician.name }}</a>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,10 @@
+<h1>{{ album.name }}</h1>
+
+<h3>Song List for {{ artist.name }}</h3>
+<ol>
+    {% for song in songs %}
+    <li>
+        <a href="{% url 'SongDetailView' song.id  %}">{{ song.name }}</a>
+    </li>
+    {% endfor %}
+</ol>
