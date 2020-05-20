@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <hr>
+  {% if pets %}
+    <div class="card-columns">
+      {% for pet in pets %}
+        {% include "partials/card.html" %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-primary" role="alert">No pets to display.</div>
+  {% endif %}
+{% endblock %}
+
+
+
+
