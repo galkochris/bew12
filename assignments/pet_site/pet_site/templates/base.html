@@ -1,0 +1,23 @@
+<title>Pet Site</title>
+
+<header>
+    <h1><a href="{% url 'home' %}">Home</a></h1>
+    {% if request.user.is_authenticated %}
+    <h1><a href="{% url 'pet-list-view' %}">All Pets</a></h1>
+    
+    <h1><a href="{% url 'pet-create-page' %}">Add Pet</a></h1>
+    
+    <h1><a href="{% url 'calendar-list-view' %}">Calendar</a></h1>
+    
+    <h1><a href="{% url 'create-appointment' %}">Create Appointment</a></h1>
+    {% endif %}
+    <h1><a href="{% url 'signup' %}">Sign Up</a></h1>
+    
+    <h1><a href="{% url 'login' %}">Login</a></h1>
+    {% if request.user.is_authenticated %}
+    <h1><a href="{% url 'logout' %}">Logout</a></h1>
+    {% endif %}
+</header>
+
+
+{% block content %} {% endblock %}

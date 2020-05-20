@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    {% for pet in pets %}
+    <div>
+        <a href="{% url 'pet-detail-page' pet.id %}">{{ pet.pet_name }}</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
