@@ -3,10 +3,19 @@
 {% block content %}
   <div class="row">
     <div class="col m-4">
-      <h3>{{ pet.name }} <small class="text-muted">Last updated {{ pet.modified|date:"SHORT_DATETIME_FORMAT" }} by <b>{{ pet.Owner.username }}</b></small></h3>
+      <h3>{{ pet.name }}'s Details:</h3>
       <hr>
-      <p>{{ pet.content|linebreaksbr }}</p>
+      <p> Species: {{ pet.species }}</p>
+      <p> Breed: {{ pet.breed }}</p>
+      <p> Weight: {{ pet.weight_in_pounds }}</p>
+      <p> Owner: {{ pet.owner }}</p>
       <hr>
+      {% for appointment in appointments %}  
+      <ul>
+          <p>{{ appointment.date_of_appointment }}</p>
+          <p>{{ appointment.duration_minutes }}</p>
+      </ul>
+      {% endfor %}
       <a href="{% url 'pets-list-page' %}">Back to List</a>
     </div>
   </div>

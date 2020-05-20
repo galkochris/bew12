@@ -18,14 +18,25 @@ from pets.forms import PetForm
 
 
 class PetListView(ListView):
-    """ Renders a list of all Pages. """
+    """ Renders a list of all pets. """
     model = Pet
 
     def get(self, request):
-        """ GET a list of Pages. """
-        pages = self.get_queryset().all()
+        """ GET a list of Pets. """
+        pets = self.get_queryset().all()
         return render(request, 'list.html', {
-          'pages': pages
+          'pets': pets
+        })
+
+class CalendarListView(ListView):
+    """ Renders a list of all events. """
+    model = Appointment
+
+    def get(self, request):
+        """ GET a list of events. """
+        event = self.get_queryset().all()
+        return render(request, 'calendar.html', {
+          'event': event
         })
 
 class PetDetailView(DetailView):
@@ -43,7 +54,7 @@ class PetDetailView(DetailView):
 
       if form.is_valid:
         pet = form.save(commit=False)
-        pet.pet = Pet.objects.get(pk=pk)
+        pet.pet = self.get_queryset().get(pk)
         pet.name  = request.POST['name']
         pet.species = request.POST['species']
         pet.breed = request.POST['breed']

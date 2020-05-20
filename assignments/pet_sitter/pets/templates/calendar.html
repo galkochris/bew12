@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col m-4">
+      <h3>All Upcoming Appointments <small class="text-muted"></b></small></h3>
+      {% for appointment in appointments %}  
+        <ul>
+            <p>{{ appointment.date_of_appointment }}</p>
+            <p>{{ appointment.duration_minutes }}</p>
+        </ul>
+      {% endfor %}
+      <a href="{% url 'pets-list-page' %}">Back to List</a>
+    </div>
+  </div>
+{% endblock %}
