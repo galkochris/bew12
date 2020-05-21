@@ -1,0 +1,7 @@
+<ol>
+    {% for song in songs %}
+    <li>
+       Song: <a href="{% url 'song_detail' song.id  %}">{{ song.name }}</a>
+    </li>
+    {% endfor %}
+</ol>

@@ -4,7 +4,7 @@
 <ol>
     {% for album in albums %}
     <li>
-        <a href="{% url 'AlbumDetailView' album.id  %}">{{ album.name }}</a>
+        Album: <a href="{% url 'album_detail' album.id  %}">{{ album.name }}</a>
     </li>
     {% endfor %}
 </ol>

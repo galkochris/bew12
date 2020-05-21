@@ -12,8 +12,13 @@ from pet.models import Pet, Appointment
 
 
 class HomeView(ListView):
+    model = Pet
+
     def get(self, request):
-        return render(request, 'home.html')
+        pets = self.get_queryset().all()
+        return render(request, 'home.html', {
+            'pets': pets
+        })
 
 class PetCreateView(CreateView):
     model = Pet
@@ -47,10 +52,6 @@ class CalendarListView(ListView):
             ).order_by('date_of_appointment' 'date_of_appointment')
         })
     
-
-
-class LoginView():
-    pass
 
 class SignUpView(CreateView):
     form_class = UserCreationForm

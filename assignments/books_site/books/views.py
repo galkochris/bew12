@@ -4,7 +4,7 @@ from .models import Book
 
 
 def home(request):
-    context ={
+    context = {
         'books': Book.objects.all()
     }
     return render(request, 'home.html', context)

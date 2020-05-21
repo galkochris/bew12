@@ -41,9 +41,9 @@ class CalendarListView(ListView):
 
 class PetDetailView(DetailView):
     model = Pet
-    template_name = 'detail.html'
+    template_name = 'pet.html'
     
-    def get(self, **kwargs):
+    def get_context_data(self, **kwargs):
         """ Returns a specific pet page by pk. """
         context = super().get_context_data(**kwargs)
         context['pet_form'] = PetForm()
@@ -52,7 +52,7 @@ class PetDetailView(DetailView):
     def post(self, request, pk):
       form = PetForm(request.POST)
 
-      if form.is_valid:
+      if form.is_valid():
         pet = form.save(commit=False)
         pet.pet = self.get_queryset().get(pk)
         pet.name  = request.POST['name']
